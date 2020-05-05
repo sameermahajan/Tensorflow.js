@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Nasscom Session</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+    <script src="webcam.js"></script>
+    <script src="rps-dataset.js"></script>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {
+            height: 1500px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div style="text-align: center;">
+                            <video autoplay playsinline muted id="wc" width="224" height="224"></video>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="text-block">
+                            <p style="text-align: center;"><button class="btn btn-primary" id="0"
+                                    onclick="handleButton(this)">Rock</button></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-block">
+                            <p style="text-align: center;"><button class="btn btn-primary" id="1"
+                                    onclick="handleButton(this)">Paper</button></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-block">
+                            <p style="text-align: center;"><button class="btn btn-primary" id="2"
+                                    onclick="handleButton(this)">Scissors</button></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="text-block">
+                            <div style="text-align: center;" id="rocksamples">Rock Samples:</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-block">
+                            <div style="text-align: center;" id="papersamples">Paper Samples:</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-block">
+                            <div style="text-align: center;" id="scissorssamples">Scissors Samples:</div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-block">
+                            <p style="text-align: center;"><button class="btn btn-primary" id="train"
+                                    onclick="doTraining()">Train Network</button></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-block">
+                            <div id="dummy" style="text-align: center;">Once training is complete, click 'Start
+                                Predicting' to see
+                                predictions, and 'Stop Predicting' to end</div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="text-block">
+                            <p style="text-align: center;"><button class="btn btn-primary" id="startPredicting"
+                                    onclick="startPredicting()">Start Predicting</button></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-block">
+                            <p style="text-align: center;"><button class="btn btn-primary" id="stopPredicting"
+                                    onclick="stopPredicting()">Stop Predicting</button></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-block">
+                            <div style="text-align: center; font-size: 2.2em; font-weight: 400;" id="prediction"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+
+</html>
