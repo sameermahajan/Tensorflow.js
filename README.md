@@ -13,3 +13,5 @@ Choose Folder to point to the location where you have cloned / downloaded this r
 Open http://127.0.0.1:8887 in chrome
 
 Navigate to and click on nasscom-session.html
+
+You can see a video on it at: https://youtu.be/M_U99Pmfaf4
